@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUDIOMACK</title>
+  <link rel="stylesheet" href="bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/css/bootstrap.css">
+</head>
+<body>
+
+
+  <h1>Welcome to Audiomack Firebase Hosting💥💥💥</h1>
+  <div class="container">
+    <div class="row mt-5">
+        <div class="col-sm-12 col-lg-3 mx-auto shadow p-5 mt-5">
+  <input type="text" class="form-control" placeholder="Name of Song" id="songName">
+  <input type="text" class="form-control mt-3" placeholder="Name of Artist" id="songArtist">
+  <input type="text" class="form-control mt-3" placeholder="Category" id="songCategory"> <br>
+  <label for="">Upload cover Image
+    <input type="file" class="form-control" accept="image/*" id="myImage"> <br>
+  </label> 
+  <label for="">Upload Song
+    <input type="file" class="form-control" accept="audio/*" id="mySong">
+  </label>
+  <button class="btn btn-dark w-100 mt-5" id="addSongBtn">Add Song</button>
+<a href="dashboard.html" class="test-muted float-end mt-3">Dashboard</a>
+</div>
+</div>   
+</div>
+
+
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+    import { getStorage, ref as stRef, uploadBytesResumable} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyAl3so-uL3CFpABTiXOuHT-1aJFtihUM0Q",
+      authDomain: "audiomack-536ca.firebaseapp.com",
+      projectId: "audiomack-536ca",
+      storageBucket: "audiomack-536ca.appspot.com",
+      messagingSenderId: "125701148571",
+      appId: "1:125701148571:web:c20ac75e4890cff952db3e",
+      databaseURL: "https://audiomack-536ca-default-rtdb.firebaseio.com",
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const storage = getStorage()
+    let allSongs = []
+    let userIndex = 0
+
+    addSongBtn.addEventListener("click", () => {
+      // Setup Information to Save
+      let coverImage = myImage.files[0]
+      let audioFile = mySong.files[0]
+            let song = {
+              title : songName.value,
+              artist : songArtist.value,
+              category : songCategory.value,
+              coverImageName : coverImage.name,
+              audioName : audioFile.name
+            }
+            console.log(song)
+
+            //Save into the Database
+            let dbRef = ref(db,`audioStore/${userIndex}`)
+            set(dbRef, song)
+
+            // Upload the file to firebase Storage
+            // let songRef = stRef(storage, `allsongs`)
+            let imageRef = stRef(storage, `Song~Store/${coverImage.name}`)
+            let songRef = stRef(storage, `Song~Store/${audioFile.name}`)
+            uploadBytesResumable(imageRef,coverImage)
+            uploadBytesResumable(songRef,audioFile)
+    })
+    onValue(ref(db,"audioStore"), (snapshot) => {
+      console.log(snapshot.val())
+      allSongs = snapshot.val()
+      if(allSongs){
+      userIndex = allSongs.length
+    }else{
+      userIndex = 0
+    }
+    })
+ 
+  </script>
+  
+</body>
+</html>

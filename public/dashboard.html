@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/css/bootstrap.css">
+</head>
+<body>
+
+    <h1>Welcome to Audiomack Firebase Dashboard 💥💥💥</h1>
+
+    <div id="disp"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+        import { getDownloadURL, ref as stRef, getStorage } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
+        const firebaseConfig = {
+          apiKey: "AIzaSyAl3so-uL3CFpABTiXOuHT-1aJFtihUM0Q",
+          authDomain: "audiomack-536ca.firebaseapp.com",
+          projectId: "audiomack-536ca",
+          storageBucket: "audiomack-536ca.appspot.com",
+          messagingSenderId: "125701148571",
+          appId: "1:125701148571:web:c20ac75e4890cff952db3e",
+          databaseURL: "https://audiomack-536ca-default-rtdb.firebaseio.com",
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const storage = getStorage()
+
+        let allSongs = []
+    
+       
+        onValue(ref(db,"audioStore"), (snapshot) => {
+          console.log(snapshot.val())
+          allSongs = snapshot.val()
+          allSongs.map((eachSong) => {
+              let imageRef = stRef(storage,`Song~Store/${eachSong.coverImageName}`)
+              let songRef = stRef(storage,`Song~Store/${eachSong.audioName}`)
+              getDownloadURL(imageRef).then((url) =>{
+                console.log(url)
+                disp.innerHTML += `
+                <img src='${url}'/>
+                `
+              })
+              getDownloadURL(songRef).then((url) =>{
+                console.log(url)
+                disp.innerHTML += `
+                <audio src='${url}' controls />
+                `
+              })
+            disp.innerHTML += `
+            <h1>
+                 ${eachSong.title}
+                 ${eachSong.artist}
+                 ${eachSong.category}
+                 ${eachSong.audioName}
+                 ${eachSong.coverImageName}
+                 </h1>
+            `
+          })
+        })
+     
+      </script>
+    
+</body>
+</html>
