@@ -68,3 +68,14 @@ Push your local repository to GitHub.
             git remote add origin <your-github-repo-url>
 git branch -M main
 git push -u origin main
+
+
+Step 10: Deploy Your Web Application
+
+You can host your web application using GitHub Pages, Netlify, or another hosting service. Set up the hosting service of your choice and configure it to deploy your application from the GitHub repository.
+
+Step 11: Share and Enjoy
+
+Your Audiomack-like web application is now live! Share the link with others, and they can register, upload audio tracks, and listen to music. Make sure to monitor your Firebase usage and optimize your code as needed.
+
+Remember that this is a simplified overview, and you can add more features and polish to your application as you see fit.
