@@ -47,3 +47,16 @@ Design your Firebase Realtime Database structure to store audio track metadata. 
     // Add more tracks here
   }
 }
+
+
+Step 6: Firebase Security Rules
+Set up Firebase Security Rules to control access to your database. For example, you may restrict write access to authenticated users only.
+
+Step 7: Test Your Application Locally
+Run your web application locally and test it to ensure that users can register, log in, upload audio tracks, and play them.
+
+Step 8: Version Control with Git
+Initialize a Git repository in your project folder and commit your code.
+              git init
+git add .
+git commit -m "Initial commit"
