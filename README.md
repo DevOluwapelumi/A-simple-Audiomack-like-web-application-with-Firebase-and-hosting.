@@ -18,6 +18,13 @@ Enable Firebase Authentication and Firebase Realtime Database services.
 
 Step 3: Set Up Your Firebase Project
 
-Initialize Firebase in your project directory by running firebase init in your command line.
+Initialize Firebase in your project directory by running Firebase init in your command line.
 Select the Firebase services you want to use (Authentication and Realtime Database).
 Configure Firebase to use your newly created project.
+
+Step 4: Develop Your Web Application
+
+You'll need to create the web application using HTML, CSS, and JavaScript. Here are the basic components:
+Authentication: Implement user registration and login using Firebase Authentication.
+Audio Upload: Allow authenticated users to upload audio files. You can use Firebase Storage to store audio files.
+Audio Streaming: Create a player to stream audio tracks. Use the Firebase Realtime Database to store metadata about the tracks (e.g., title, artist, URL).
