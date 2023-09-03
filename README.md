@@ -28,3 +28,22 @@ You'll need to create the web application using HTML, CSS, and JavaScript. Here 
 Authentication: Implement user registration and login using Firebase Authentication.
 Audio Upload: Allow authenticated users to upload audio files. You can use Firebase Storage to store audio files.
 Audio Streaming: Create a player to stream audio tracks. Use the Firebase Realtime Database to store metadata about the tracks (e.g., title, artist, URL).
+
+Step 5: Firebase Database Structure
+
+Design your Firebase Realtime Database structure to store audio track metadata. For example:
+              {
+  "tracks": {
+    "track1": {
+      "title": "Song Title 1",
+      "artist": "Artist Name 1",
+      "url": "https://firebase-storage-url.com/track1.mp3"
+    },
+    "track2": {
+      "title": "Song Title 2",
+      "artist": "Artist Name 2",
+      "url": "https://firebase-storage-url.com/track2.mp3"
+    },
+    // Add more tracks here
+  }
+}
