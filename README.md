@@ -15,3 +15,9 @@ Step 2: Create a Firebase Project
 Go to the Firebase Console (https://console.firebase.google.com/).
 Click on "Add project" and follow the prompts to create a new Firebase project.
 Enable Firebase Authentication and Firebase Realtime Database services.
+
+Step 3: Set Up Your Firebase Project
+
+Initialize Firebase in your project directory by running firebase init in your command line.
+Select the Firebase services you want to use (Authentication and Realtime Database).
+Configure Firebase to use your newly created project.
