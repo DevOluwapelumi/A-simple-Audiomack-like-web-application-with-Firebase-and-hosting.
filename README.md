@@ -60,3 +60,11 @@ Initialize a Git repository in your project folder and commit your code.
               git init
 git add .
 git commit -m "Initial commit"
+
+
+Step 9: Host Your Application on GitHub
+Create a new GitHub repository for your project.
+Push your local repository to GitHub.
+            git remote add origin <your-github-repo-url>
+git branch -M main
+git push -u origin main
