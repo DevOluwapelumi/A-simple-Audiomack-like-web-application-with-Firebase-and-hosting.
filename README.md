@@ -9,3 +9,9 @@ Node.js and npm (Node Package Manager)
 Firebase account and Firebase CLI
 GitHub account and Git installed
 A code editor (e.g., Visual Studio Code)
+
+Step 2: Create a Firebase Project
+
+Go to the Firebase Console (https://console.firebase.google.com/).
+Click on "Add project" and follow the prompts to create a new Firebase project.
+Enable Firebase Authentication and Firebase Realtime Database services.
