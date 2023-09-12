@@ -58,7 +58,7 @@ Run your web application locally and test it to ensure that users can register, 
 Step 8: Version Control with Git
 Initialize a Git repository in your project folder and commit your code.
               git init
-git add .
+git add.
 git commit -m "Initial commit"
 
 
