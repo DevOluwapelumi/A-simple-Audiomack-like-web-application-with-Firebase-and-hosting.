@@ -4,7 +4,6 @@ Creating a simple Audiomack-like web application with Firebase and hosting it on
 Step 1: Set Up Your Development Environment
 
 Before you begin, make sure you have the following tools and services installed and configured:
-
 Node.js and npm (Node Package Manager)
 Firebase account and Firebase CLI
 GitHub account and Git installed
